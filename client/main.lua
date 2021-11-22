@@ -1,9 +1,11 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 local loaded = false
 
-Citizen.CreateThread(
+CreateThread(
     function()
         loaded = true
-        Citizen.Wait(1000)
+        Wait(1000)
         SendNUIMessage(
             {
                 type = "toggle",
@@ -13,10 +15,10 @@ Citizen.CreateThread(
     end
 )
 
-Citizen.CreateThread(
+CreateThread(
     function()
         while true do
-            Citizen.Wait(1000)
+            Wait(1000)
 
             if loaded and not IsPauseMenuActive() then
                 QBCore.Functions.TriggerCallback(
