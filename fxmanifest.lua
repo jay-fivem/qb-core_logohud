@@ -3,8 +3,6 @@ fx_version 'adamant'
 
 game 'gta5'
 
-shared_script '@qb-core/import.lua'
-
 ui_page 'html/form.html'
 
 files {
