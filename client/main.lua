@@ -2,18 +2,27 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local loaded = false
 
-CreateThread(
-    function()
-        loaded = true
-        Wait(1000)
-        SendNUIMessage(
-            {
-                type = "toggle",
-                value = true
-            }
-        )
-    end
-)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    loaded = true
+    SendNUIMessage(
+        {
+            type = "toggle",
+            value = true
+        }
+    )
+end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerUnload')
+AddEventHandler('QBCore:Client:OnPlayerUnload', function()
+    loaded = false
+    SendNUIMessage(
+        {
+            type = "toggle",
+            value = false
+        }
+    )
+end)
 
 CreateThread(
     function()
